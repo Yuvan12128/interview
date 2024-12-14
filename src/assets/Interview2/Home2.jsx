@@ -1,6 +1,16 @@
+import { useState } from 'react';
 import './Home2.css'
 import yuvan from './yuvan.jpeg'
 function Home2() {
+    const [inputs, setInputs] = useState([
+        { id: 1, name: 'yuvan', relationshop: 'sister', status: 'active', check: true },
+        { id: 2, name: 'shankar', relationshop: 'sister', status: 'active', check: true },
+        { id: 3, name: 'dhoni', relationshop: 'sister', status: 'active', check: false },
+        { id: 4, name: 'kavya', relationshop: 'sister', status: 'active', check: true },
+
+    ])
+
+
     return (
         <>
             <div className="container text-center">
@@ -53,64 +63,27 @@ function Home2() {
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th scope="col"><b>S. No</b></th>
+                                            <th scope="col">S. No</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Relationship</th>
                                             <th scope="col">Status</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row"><input type="checkbox" name="" id="" /></th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>
-                                                <label className='switch'>
-                                                    <input type="checkbox" />
+
+                                        {inputs.map(e =>
+                                            <tr key={e}>
+                                                <th scope="row"><input type="checkbox" /></th>
+                                                <td>{e.name} </td>
+                                                <td>{e.relationshop}</td>
+                                                <td> <label className='switch'>
+                                                    <input type="checkbox"  />
                                                     <span className='slider round'></span>
                                                 </label>
-                                                <p className='d-inline-flex p-2'>active</p>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><input type="checkbox" name="" id="" /></th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>
-                                            <label className='switch'>
-                                                    <input type="checkbox" />
-                                                    <span className='slider round'></span>
-                                                </label>
-                                                <p className='d-inline-flex p-2'>active</p>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><input type="checkbox" name="" id="" /></th>
-                                            <td >Larry the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>
-                                            <label className='switch'>
-                                                    <input type="checkbox" />
-                                                    <span className='slider round'></span>
-                                                  
-                                                </label>
-                                                <p className='d-inline-flex p-2'>inactive</p>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><input type="checkbox" name="" id="" /></th>
-                                            <td >Larry the Bird</td>
-                                            <td>@twitter</td>
-                                            <td> 
-                                            <label className='switch '>
-                                           
-                                                    <input type="checkbox" /> 
-                                                    <span className='slider round '></span>
-                                                   
-                                                </label>
-                                              <p className='d-inline-flex p-2'>active</p>
-                                            </td>
-                                        </tr>
+                                                    {e.status}</td>
+                                            </tr>)
+                                            }
                                     </tbody>
                                 </table>
                             </div>
