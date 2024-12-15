@@ -1,4 +1,4 @@
-
+import logo from './logo.png'
 
 function Navbar() {
     return (
@@ -6,7 +6,7 @@ function Navbar() {
             <div className="container border border-1">
                 <nav className="navbar bg-body-tertiary">
                     <div className="container-fluid">
-                        <a className="navbar-brand">my-will</a>
+                        <a className="navbar-brand"><img src={logo} style={{padding:'10px'}}/>my-will</a>
                         <form className="d-flex align-items-center" role="search">
                             <div className="input-group">
                                 <input

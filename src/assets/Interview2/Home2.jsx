@@ -5,16 +5,16 @@ import { Link } from 'react-router-dom';
 
 function Home2() {
     const [inputs, setInputs] = useState([
-        { id: 1, name: 'yuvan', relationship: 'brother', status: 'active', check: true, date: '04/10/1988' },
-        { id: 2, name: 'shankar', relationship: 'brother', status: 'active', check: true, date: '04/10/1988' },
-        { id: 3, name: 'dhoni', relationship: 'brother', status: 'active', check: false, date: '04/10/1988' },
-        { id: 4, name: 'varatha', relationship: 'brother', status: 'active', check: true, date: '04/10/1988' },
+        { id: 1, name: 'yuvan', relationship: 'brother', status: true, check: true, date: '04/10/1988' },
+        { id: 2, name: 'shankar', relationship: 'brother', status: true, check: true, date: '04/10/1988' },
+        { id: 3, name: 'dhoni', relationship: 'brother', status: true, check: false, date: '04/10/1988' },
+        { id: 4, name: 'varatha', relationship: 'brother', status: true, check: true, date: '04/10/1988' },
     ]);
     const [showForm, setShowForm] = useState(false);
     const [newItem, setNewItems] = useState({
         name: '',
         relationship: '',
-        status: 'active',
+        status: false,
         check: false,
         date: '',
     });
@@ -27,9 +27,9 @@ function Home2() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (newItem.name && newItem.relationship && newItem.date) {
-            setInputs([...inputs, { id: inputs.length + 1, ...newItem, status: 'active' }]);
+            setInputs([...inputs, { id: inputs.length + 1, ...newItem, status: false }]);
             setShowForm(false);
-            setNewItems({ name: '', relationship: '', status: '', check: false, date: '' });
+            setNewItems({ name: '', relationship: '', status: false, check: false, date: '' });
         } else {
             alert('Please fill in all fields');
         }
@@ -73,27 +73,27 @@ function Home2() {
                             </div>
                             <div className="col">
                                 <button onClick={() => setShowForm(true)} type="button" className="btn btn-light">
-                                    <i className="bi bi-person-add"></i> ADD <p className="p-1">Beneficiaries</p>
+                                <i class="fa-solid fa-house"></i> ADD <p className="p-1">Asset</p>
                                 </button>
                             </div>
                             <div className="col">
                                 <button onClick={() => setShowForm(true)} type="button" className="btn btn-light">
-                                    <i className="bi bi-person-add"></i> ADD <p className="p-1">Beneficiaries</p>
+                                <i class="fa-solid fa-wallet"></i> CREATE <p className="p-1">Liability</p>
                                 </button>
                             </div>
                             <div className="col">
                                 <button onClick={() => setShowForm(true)} type="button" className="btn btn-light">
-                                    <i className="bi bi-person-add"></i> ADD <p className="p-1">Beneficiaries</p>
+                                <i class="fa-solid fa-network-wired"></i> ADD <p className="p-1">Links</p>
                                 </button>
                             </div>
                             <div className="col">
                                 <button onClick={() => setShowForm(true)} type="button" className="btn btn-light">
-                                    <i className="bi bi-person-add"></i> ADD <p className="p-1">Beneficiaries</p>
+                                <i class="bi bi-pen"></i> 0 <p className="p-1">Signatories</p>
                                 </button>
                             </div>
                             <div className="col">
                                 <button onClick={() => setShowForm(true)} type="button" className="btn btn-light">
-                                    <i className="bi bi-person-add"></i> ADD <p className="p-1">Beneficiaries</p>
+                                <i class="fa-regular fa-file"></i> ADD <p className="p-1">Willl Generation</p>
                                 </button>
                             </div>
                         </div>
@@ -128,13 +128,14 @@ function Home2() {
                                                     <input
                                                         type="checkbox"
                                                         checked={e.check}
+
                                                         onChange={() => {
                                                             const updatedInputs = inputs.map((item) =>
                                                                 item.id === e.id ? { ...item, check: !item.check } : item
                                                             );
                                                             setInputs(updatedInputs);
                                                         }}
-                                                    />
+                                                    />  
                                                 </th>
                                                 <td>{e.name}</td>
                                                 <td>{e.relationship}</td>
@@ -153,7 +154,7 @@ function Home2() {
                                                         />
                                                         <span className="slider round"></span>
                                                     </label>
-                                                    {e.status}
+                                                    {e.status &&  e.check?'Acitve':'Inactive'}
 
                                                 </td>
 
