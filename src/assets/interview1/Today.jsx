@@ -1,5 +1,5 @@
 import My_will from "./My_will";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 function Today(){
   
     const today=new Date();
@@ -22,7 +22,7 @@ function Today(){
         </div>
         
             <My_will/>
-            <Link to='/home'><div className="container sticky-bottom s-button">
+            <Link to='/home2'><div className="container sticky-bottom s-button">
             <div className="container text-center ">
               <div className="row ">
                 <div className="col text-start p-3" >
